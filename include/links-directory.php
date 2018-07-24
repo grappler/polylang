@@ -41,8 +41,10 @@ class PLL_Links_Directory extends PLL_Links_Permalinks {
 			add_action( 'setup_theme', array( $this, 'add_permastruct' ), 2 );
 		}
 
-		// Make sure to prepare rewrite rules when flushing
-		add_action( 'pre_option_rewrite_rules', array( $this, 'prepare_rewrite_rules' ) );
+		if ( ! ms_is_switched() ) {
+			// Make sure to prepare rewrite rules when flushing
+			add_action( 'pre_option_rewrite_rules', array( $this, 'prepare_rewrite_rules' ) );
+		}
 	}
 
 	/**
